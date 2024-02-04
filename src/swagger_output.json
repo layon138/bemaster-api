@@ -1,0 +1,288 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "v1.0.0",
+    "title": "Swagger beMASTER Project",
+    "description": "Implementation of Swagger with TypeScript"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new User.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "julianvargas705@hotmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "1213654"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login User User.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "julianvargas705@hotmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "1213654"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/videos/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new Video By User.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "type": "string",
+                  "example": "primer video segundo usuario"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "primera prueba"
+                },
+                "url": {
+                  "type": "string",
+                  "example": "https://www.youtube.com/watch?v=497L4-LhvdM&t=348s"
+                },
+                "credit": {
+                  "type": "string",
+                  "example": "b00d858a-45fb-4d8b-92b3-9ae2a3d0f46a"
+                },
+                "public": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "titulo",
+                "description",
+                "url",
+                "credit",
+                "public"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/videos/comment/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new Comment in Video By User.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "b00d858a-45fb-4d8b-92b3-9ae2a3d0f46a"
+                },
+                "videoId": {
+                  "type": "string",
+                  "example": "ac68d9a7-a7d9-4d15-944b-40ae32c57b4c"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "commentario de emilia"
+                }
+              },
+              "required": [
+                "userId",
+                "videoId",
+                "description"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/videos/like/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new Like in Video By User.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "b00d858a-45fb-4d8b-92b3-9ae2a3d0f46a"
+                },
+                "videoId": {
+                  "type": "string",
+                  "example": "ac68d9a7-a7d9-4d15-944b-40ae32c57b4c"
+                }
+              },
+              "required": [
+                "userId",
+                "videoId"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/videos/list": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "credit",
+            "description": "Usuario que quieras filtrar",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/videos/popular": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/videos/private/list": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "credit",
+            "description": "Usuario que quieras filtrar los videos privados",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

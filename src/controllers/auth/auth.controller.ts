@@ -4,6 +4,15 @@ import generatorToken from '../../utils/tokenUtil'
 
 
 export const createUserController = async (req, res) => {
+    /*  #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'Add new User.',
+            schema: {
+                      $email:"julianvargas705@hotmail.com",
+              $password:"1213654"
+            }
+    } 
+    */
     try {
       let object = req.body as UserCreateInterface;
       await registerUser(object);
@@ -22,6 +31,15 @@ export const createUserController = async (req, res) => {
 
 
   export const loginUserController = async (req, res) => {
+     /*  #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'Login User User.',
+            schema: {
+                      $email:"julianvargas705@hotmail.com",
+              $password:"1213654"
+            }
+    } 
+    */
     try {
       let object = req.body as UserCreateInterface;
       const result=await authUser(object);
