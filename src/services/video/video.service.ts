@@ -1,4 +1,8 @@
 import {
+  CommentCreateInterface,
+  CommentCreateRequestInterface,
+  LikeCreateInterface,
+  LikeCreateRequestInterface,
   VideoCreateInterface,
   VideoCreateRequestInterface,
 } from "../../interfaces/video.interface";
@@ -15,6 +19,25 @@ export const registerVideo = async (video: VideoCreateRequestInterface) => {
     id: generatorUtil.generateId(),
   };
   await repository.insert(videoToInsert);
+};
+
+
+export const registerCommentInVideo = async (video: CommentCreateRequestInterface) => {
+  const videoToInsert: CommentCreateInterface = {
+    ...video,
+    dateCreated: dateUtil.generateDateNow(),
+    id: generatorUtil.generateId(),
+  };
+  await repository.insertComment(videoToInsert);
+};
+
+export const registerLikeInVideo = async (video: LikeCreateRequestInterface) => {
+  const likeToInsert: LikeCreateInterface = {
+    ...video,
+    dateCreated: dateUtil.generateDateNow(),
+    id: generatorUtil.generateId(),
+  };
+  await repository.insertLike(likeToInsert);
 };
 
 export const listVideo = async (filter: any) => {

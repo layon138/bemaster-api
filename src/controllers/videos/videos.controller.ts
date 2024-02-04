@@ -1,5 +1,5 @@
-import { VideoCreateRequestInterface } from "../../interfaces/video.interface";
-import { listVideo, listVideoPrivate, registerVideo } from "../../services/video/video.service";
+import { CommentCreateRequestInterface, VideoCreateRequestInterface } from "../../interfaces/video.interface";
+import { listVideo, listVideoPrivate, registerCommentInVideo, registerLikeInVideo, registerVideo } from "../../services/video/video.service";
 
 export const createVideoByUser = async (req, res) => {
   try {
@@ -17,6 +17,41 @@ export const createVideoByUser = async (req, res) => {
   }
 
 };
+
+export const createCommentOnVideoByUser = async (req, res) => {
+  try {
+    const object = req.body as CommentCreateRequestInterface;
+    await registerCommentInVideo(object);
+    res.json({
+      message: "commentario agregado",
+      status: "success",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "no se guardo el commentario",
+      status: "failed",
+    });
+  }
+
+};
+
+export const createLikeOnVideoByUser = async (req, res) => {
+  try {
+    const object = req.body as CommentCreateRequestInterface;
+    await registerLikeInVideo(object);
+    res.json({
+      message: "like agregado",
+      status: "success",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "no se guardo el like",
+      status: "failed",
+    });
+  }
+
+};
+
 
 export const getAllVideoPublic = async (req, res) => {
   try {

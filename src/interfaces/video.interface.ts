@@ -14,7 +14,7 @@ export interface VideoCreateInterface{
     public:boolean;
     dateCreated:string;
     commets?:Comment[];
-    likes?:Like[];
+    likes?:string[];
     id:string;
 }
 
@@ -23,7 +23,29 @@ export interface Comment{
     description:string;
 }
 
-export interface Like{
-    user:string;
-    calification:number;
+export interface CommentCreateRequestInterface{
+    userId:string;
+    videoId:string;
+    description:string;
 }
+
+export interface CommentCreateInterface{
+    id:string;
+    userId:string;
+    videoId:string;
+    description:string;
+    dateCreated:string;
+}
+
+export interface LikeCreateRequestInterface{
+    userId:string;
+    videoId:string;
+}
+
+export interface LikeCreateInterface{
+    id:string;
+    dateCreated:string;
+    userId:string;
+    videoId:string;
+}
+
