@@ -1,5 +1,4 @@
 import { MongoClient, ServerApiVersion  } from "mongodb";
-import mongoose from "mongoose";
 
 const client = new MongoClient(process.env.MONGODB, {
   serverApi: {

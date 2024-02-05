@@ -133,7 +133,7 @@ export const getAllVideoPrivate = async (req, res) => {
       status: "success",
     });
   } catch (error) {
-    res.status(500).json({
+    res.json({
       message: "No existen videos",
       status: "failed",
     });

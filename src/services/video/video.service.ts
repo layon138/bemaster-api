@@ -46,6 +46,7 @@ export const listVideo = async (filter: any) => {
   };
 
 export const listVideoPrivate = async (type: boolean) => {
+
   const list = await repository.findByAtribute("public", type);
   return list;
 };

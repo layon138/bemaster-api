@@ -1,8 +1,12 @@
+import { MongoClient, ServerApiVersion } from "mongodb";
+import dbInit, { database } from "./mongo.config";
+import {describe, expect, test,jest,afterEach,it} from '@jest/globals';
+jest.mock("mongodb");
 
-import { Db } from 'mongodb';
-import {describe, expect, test,jest,afterEach} from '@jest/globals';
-describe('69011729', () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
+describe("dbInit", () => {
+  it("should connect to the database", async () => {
+    await dbInit();
+
+    expect(MongoClient).toHaveBeenCalled();
   });
 });
